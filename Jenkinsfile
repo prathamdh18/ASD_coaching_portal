@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-                bat "rmdir /s /q ASD_coaching_portal"
+                //bat "rmdir /s /q ASD_coaching_portal"
                 bat "git clone https://github.com/prathamdh18/ASD_coaching_portal.git"
                 bat "mvn clean -f ASD_coaching_portal"
             }
