@@ -1,30 +1,23 @@
+
 pipeline {
-    agent any
-    stages {
-        stage('git repo & clean') {
-            steps {
-                //bat "rmdir /s /q ASD_coaching_portal"
-                bat "git clone https://github.com/prathamdh18/ASD_coaching_portal.git"
-                bat "mvn clean -f ASD_coaching_portal"
-            }
-         }
-         stage('install') {
-             steps {
-                  bat "mvn install -f ASD_coaching_portal"
-             }
-         }
-         stage('test') {
-             steps {
-                 bat "mvn test -f ASD_coaching_portal"
-             }
-         }
-         stage('package') {
-             steps {
-                bat "mvn package -f ASD_coaching_portal"
-             }
-         }
+   agent any
+
+   stages {
+      stage('Build') {
+        steps {
+          echo 'Building...'
+          echo "Running ${env.BUILD_ID} ${env.BUILD_DISPLAY_NAME} on ${env.NODE_NAME} and JOB ${env.JOB_NAME}"
+        }
    }
+   stage('Test') {
+     steps {
+        echo 'Testing...'
+     }
+   }
+   stage('Deploy') {
+     steps {
+       echo 'Deploying...'
+     }
+   }
+  }
 }
-   
-   
-            
